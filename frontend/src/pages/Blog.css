@@ -1,0 +1,109 @@
+/* Blog.css */
+
+.blog-container {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px;
+  text-align: center;
+  background: #fef6e4;
+  color: #333333;
+  min-height: 100vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d1495b;
+  margin-bottom: 20px;
+}
+
+/* Form */
+.blog-form {
+  background: #fff1e6;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Textarea */
+.blog-textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  resize: vertical;
+  margin-bottom: 20px;
+  font-family: inherit;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* File input */
+.file-input {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Submit button */
+.submit-btn {
+  background: #d1495b;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #a8323a;
+  transform: scale(1.05);
+}
+
+/* Blogs list */
+.blogs-list {
+  margin-top: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blogs-list h2 {
+  font-size: 2rem;
+  color: #d1495b;
+  margin-bottom: 20px;
+}
+
+.blog-item {
+  background: #fff1e6;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.blog-item h3 {
+  font-size: 1.5rem;
+  color: #d1495b;
+  margin-bottom: 10px;
+}
+
+.blog-item p {
+  font-size: 1rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.blog-item em {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
