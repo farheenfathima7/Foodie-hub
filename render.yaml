@@ -2,7 +2,7 @@ services:
   - type: web
     name: foodiehub-backend
     runtime: node
-    buildCommand: npm install
+    buildCommand: npm install && npm run migrate
     startCommand: npm start
     sourceDir: foodiehub backend
     envVars:

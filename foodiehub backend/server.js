@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 
+// Import models
+const FoodItem = require('./models/FoodItem');
+const Blog = require('./models/Blog');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -18,25 +22,6 @@ mongoose.connect(MONGODB_URI, {
 })
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
-
-// Define schemas and models
-const foodItemSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    price: Number,
-    category: String,
-    image: String
-});
-
-const blogSchema = new mongoose.Schema({
-    title: String,
-    content: String,
-    author: String,
-    createdAt: { type: Date, default: Date.now }
-});
-
-const FoodItem = mongoose.model('FoodItem', foodItemSchema);
-const Blog = mongoose.model('Blog', blogSchema);
 
 app.get('/api/blogs', async (req, res) => {
     try {
