@@ -3,10 +3,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 
-// Import models
-const FoodItem = require('./models/FoodItem');
-const Blog = require('./models/Blog');
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -15,13 +11,32 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/foodiehub';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://farheenfathima2005_db_user:v5j4Oli49kaDws56@foodiehub.pnqghnn.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
+
+// Define schemas and models
+const foodItemSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    price: Number,
+    category: String,
+    image: String
+});
+
+const blogSchema = new mongoose.Schema({
+    title: String,
+    content: String,
+    author: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+const FoodItem = mongoose.model('FoodItem', foodItemSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 app.get('/api/blogs', async (req, res) => {
     try {
@@ -90,7 +105,7 @@ app.put('/api/food-items/:id', async (req, res) => {
         }
         res.json(foodItem);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
