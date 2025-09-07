@@ -13,7 +13,12 @@ const Blog = () => {
       try {
         const fetchedBlogs = await apiService.getBlogs(); // Fetch blogs from API
         console.log('Fetched blogs:', fetchedBlogs); // Log the fetched blogs
-        setBlogs(fetchedBlogs); // Set blogs state
+        // Fix: Check if fetchedBlogs is an array, else parse JSON string
+        if (typeof fetchedBlogs === 'string') {
+          setBlogs(JSON.parse(fetchedBlogs));
+        } else {
+          setBlogs(fetchedBlogs); // Set blogs state
+        }
       } catch (error) {
         console.error('Error fetching blogs:', error);
       }
@@ -40,7 +45,12 @@ const Blog = () => {
 
     // Fetch updated blogs
     const fetchedBlogs = await apiService.getBlogs();
-    setBlogs(fetchedBlogs); // Update blogs state
+    // Fix: Check if fetchedBlogs is an array, else parse JSON string
+    if (typeof fetchedBlogs === 'string') {
+      setBlogs(JSON.parse(fetchedBlogs));
+    } else {
+      setBlogs(fetchedBlogs); // Update blogs state
+    }
   };
 
   return (
