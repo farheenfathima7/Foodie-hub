@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://farheenfathima2005_db_user:v5j4Oli49kaDws56@foodiehub.pnqghnn.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:S5qD4a45UZah7keX@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -162,6 +162,7 @@ app.get('/api/health', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
+    console.log('Backend is running');
     console.log(`Server is running on http://localhost:${PORT}`);
     console.log(`API endpoints available at http://localhost:${PORT}/api`);
 });
