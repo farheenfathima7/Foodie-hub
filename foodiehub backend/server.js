@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:S5qD4a45UZah7keX@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:S5qD4a45UZah7keX@foodiehub.05hajqk.mongodb.net/foodiehub?retryWrites=true&w=majority&appName=foodiehub';
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -40,7 +40,8 @@ const Blog = mongoose.model('Blog', blogSchema);
 
 app.get('/api/blogs', async (req, res) => {
     try {
-        const blogs = await Blog.find();
+        // Only return published blogs
+        const blogs = await Blog.find({ isPublished: true });
         res.json(blogs);
     } catch (error) {
         res.status(500).json({ error: error.message });

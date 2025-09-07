@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/foodiehub';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:S5qD4a45UZah7keX@foodiehub.05hajqk.mongodb.net/foodiehub?retryWrites=true&w=majority&appName=foodiehub';
 
 async function runMigrations() {
     try {
