@@ -11,10 +11,18 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
-mongoose.connect(MONGODB_URI)
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+const MONGODB_URI = 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub'; // Use correct password directly
+console.log('🔍 Using hardcoded correct MongoDB URI for testing');
+console.log('Using URI:', MONGODB_URI.replace(/:([^:@]{4})[^:@]*@/, ':$1****@')); // Hide password
+
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+    socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+})
+.then(() => console.log('✅ MongoDB connected successfully'))
+.catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Define schemas and models
 const foodItemSchema = new mongoose.Schema({
