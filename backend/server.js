@@ -131,16 +131,9 @@ app.delete('/api/food-items/:id', async (req, res) => {
 app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Root endpoint
+// Root endpoint for Render deployment check
 app.get('/', (req, res) => {
-    res.json({ 
-        message: 'FoodieHub Backend API',
-        endpoints: {
-            health: '/api/health',
-            blogs: '/api/blogs',
-            foodItems: '/api/food-items'
-        },
-        documentation: 'Visit /api endpoints for specific functionality'
-    });
+    res.send('Backend is running on Render');
 });
 
 // API info endpoint
