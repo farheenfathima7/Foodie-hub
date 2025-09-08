@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
@@ -10,11 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:uAJFG92t7yZSyhkB@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
+mongoose.connect(MONGODB_URI)
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
 
