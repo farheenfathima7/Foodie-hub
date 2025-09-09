@@ -1,3 +1,4 @@
+
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -7,17 +8,22 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5174",
+    "https://foodiehub-backend.onrender.com"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub'; // Use correct password directly
-console.log('🔍 Using hardcoded correct MongoDB URI for testing');
+const MONGODB_URI = 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
+console.log('🔍 Using MongoDB URI');
 console.log('Using URI:', MONGODB_URI.replace(/:([^:@]{4})[^:@]*@/, ':$1****@')); // Hide password
 
 mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
     socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
 })

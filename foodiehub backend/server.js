@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 10000;
 app.use(cors({
   origin: [
     "http://localhost:5174",
-    "https://foodiehub-your-app.onrender.com"
+    "https://foodiehub-backend.onrender.com"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
@@ -28,7 +28,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 connectDB();
 
 // Root
-app.get("/", (req, res) => res.send("✅ FoodieHub Backend is live 🚀"));
+const isOnRender = !!process.env.RENDER_EXTERNAL_URL;
+app.get("/", (req, res) => res.send(`✅ FoodieHub Backend is live 🚀 ${isOnRender ? 'on Render' : 'locally'}`));
 
 // Health check route
 app.get("/healthz", (req, res) => res.send("OK"));
