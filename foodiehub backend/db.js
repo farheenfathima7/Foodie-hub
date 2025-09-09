@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const mongoURI = 'mongodb+srv://feehafathima05_db_user:juhdTJbT4eDFLeEQ@foodiehub.05hajqk.mongodb.net/foodiehub?retryWrites=true&w=majority&appName=foodiehub';
+    const mongoURI = 'mongodb+srv://feehafathima05_db_user:xoWa4piSfJRz0tjj@foodiehub.05hajqk.mongodb.net/?retryWrites=true&w=majority&appName=foodiehub';
 
     await mongoose.connect(mongoURI);
 
